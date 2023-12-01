@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.Manager">
+   <center>
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="homeTabPane" text="Home">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
+                           <children>
+                              <Text layoutX="300.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To The Toy Store" textAlignment="CENTER" wrappingWidth="178.803466796875" AnchorPane.bottomAnchor="535.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <Separator layoutY="40.0" prefHeight="15.0" prefWidth="800.0" AnchorPane.bottomAnchor="515.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                              <Text layoutX="15.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Inventory By:" wrappingWidth="136.803466796875" AnchorPane.leftAnchor="6.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <RadioButton fx:id="radioButtonSearchSN" layoutX="14.0" layoutY="85.0" mnemonicParsing="false" text="Serial Number">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="Group1" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="radioButtonSearchName" layoutX="111.0" layoutY="85.0" mnemonicParsing="false" text="Name" toggleGroup="$Group1">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton fx:id="radioButtonSearchType" layoutX="169.0" layoutY="85.0" mnemonicParsing="false" text="Type" toggleGroup="$Group1">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </RadioButton>
+                              <Separator layoutX="5.0" layoutY="113.0" maxWidth="-Infinity" prefHeight="15.0" prefWidth="204.0" AnchorPane.bottomAnchor="445.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="565.0" AnchorPane.topAnchor="115.0" />
+                              <Label fx:id="searchSNLabel" layoutX="8.0" layoutY="146.0" text="Serial Number(SN)" AnchorPane.leftAnchor="10.0" />
+                              <TextField fx:id="searchSNTextField" layoutX="115.0" layoutY="142.0" prefHeight="25.0" prefWidth="110.0" text="serial number" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" AnchorPane.topAnchor="142.0" />
+                              <Label fx:id="searchNameLabel" layoutX="31.0" layoutY="204.0" text="Toy Name" AnchorPane.leftAnchor="10.0" />
+                              <TextField fx:id="searchNameTextField" layoutX="115.0" layoutY="200.0" prefHeight="25.0" prefWidth="110.0" text="name" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" />
+                              <Label fx:id="searchTypeLabel" layoutX="33.0" layoutY="265.0" text="Toy Type" AnchorPane.leftAnchor="10.0" />
+                              <TextField fx:id="searchTypeTextField" layoutX="115.0" layoutY="261.0" prefHeight="25.0" prefWidth="110.0" text="type" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" />
+                              <Separator layoutX="5.0" layoutY="294.0" maxWidth="-Infinity" prefHeight="15.0" prefWidth="227.0" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="565.0" AnchorPane.topAnchor="300.0" />
+                              <Button fx:id="searchSearchButton" layoutX="31.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Search" />
+                              <Button fx:id="searchClearButton" layoutX="133.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Clear" />
+                              <ListView layoutX="238.0" layoutY="56.0" prefHeight="395.0" prefWidth="555.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="55.0">
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </ListView>
+                              <Button fx:id="searchPurchaseButton" layoutX="442.0" layoutY="495.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Purchase" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="addToyTabPane" text="Add Toy">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Separator layoutY="116.0" prefHeight="15.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="540.0" AnchorPane.topAnchor="115.0" />
+                              <Separator layoutX="272.0" layoutY="58.0" orientation="VERTICAL" prefHeight="510.0" prefWidth="29.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="515.0" AnchorPane.topAnchor="55.0" />
+                              <Separator layoutX="277.0" layoutY="293.0" prefHeight="15.0" prefWidth="245.0" AnchorPane.bottomAnchor="263.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="278.0" AnchorPane.topAnchor="293.0" />
+                              <Separator layoutX="547.0" layoutY="293.0" prefHeight="15.0" prefWidth="240.0" AnchorPane.leftAnchor="547.0" AnchorPane.rightAnchor="3.0" />
+                              <Separator layoutX="528.0" layoutY="53.0" orientation="VERTICAL" prefHeight="240.0" prefWidth="15.0" AnchorPane.topAnchor="55.0" />
+                              <Separator layoutX="110.0" layoutY="41.0" prefHeight="15.0" prefWidth="200.0" AnchorPane.bottomAnchor="515.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                              <Text layoutX="300.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To The Toy Store" textAlignment="CENTER" AnchorPane.bottomAnchor="535.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <Separator layoutX="528.0" layoutY="308.0" orientation="VERTICAL" prefHeight="251.0" prefWidth="15.0" AnchorPane.bottomAnchor="12.0" />
+                              <Text layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter New Toy Information:" wrappingWidth="169.13153076171875" AnchorPane.leftAnchor="5.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <Separator layoutX="330.0" layoutY="79.0" prefHeight="15.0" prefWidth="246.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="79.0" />
+                              <Separator layoutX="585.0" layoutY="81.0" prefHeight="15.0" prefWidth="142.0" AnchorPane.bottomAnchor="479.0" AnchorPane.leftAnchor="585.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="81.0" />
+                              <Separator layoutX="336.0" layoutY="332.0" prefHeight="15.0" prefWidth="142.0" />
+                              <Separator layoutX="584.0" layoutY="332.0" prefHeight="15.0" prefWidth="142.0" />
+                              <Text layoutX="5.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="106.13674926757812" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="688.8632507324219" AnchorPane.topAnchor="200.0" />
+                              <Label fx:id="addToyCategoryLabel" layoutX="49.0" layoutY="122.0" text="Category" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="150.0" />
+                              <ComboBox fx:id="addToyCategoryComboBox" layoutX="99.0" layoutY="136.0" prefWidth="150.0" promptText="Toy Type" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="150.0" />
+                              <Label fx:id="addToySNLabel" layoutX="18.0" layoutY="175.0" text="Serial Number" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="200.0" />
+                              <TextField fx:id="addToySNTextField" layoutX="116.0" layoutY="182.0" text="serial number" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="200.0" />
+                              <Label fx:id="addToyNameLabel" layoutX="14.0" layoutY="254.0" text="Name" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="250.0" />
+                              <TextField layoutX="116.0" layoutY="246.0" text="name" AnchorPane.topAnchor="250.0" />
+                              <Label fx:id="addToyBrandLabel" layoutX="32.0" layoutY="277.0" text="Brand" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="300.0" />
+                              <TextField layoutX="116.0" layoutY="288.0" text="brand" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="300.0" />
+                              <Label fx:id="addToyPriceLabel" layoutX="20.0" layoutY="342.0" text="Price" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="350.0" />
+                              <TextField layoutX="116.0" layoutY="353.0" text="price" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="350.0" />
+                              <Label fx:id="addToyAvailableCountLabel" layoutX="12.0" layoutY="383.0" text="Available-Count" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="400.0" />
+                              <TextField layoutX="116.0" layoutY="405.0" text="available-count" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="400.0" />
+                              <Label fx:id="addToyAgeAppropriateLabel" layoutX="39.0" layoutY="442.0" text="Age-Appropriate" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="450.0" />
+                              <TextField layoutX="116.0" layoutY="446.0" text="age-appropriate" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="450.0" />
+                              <Label fx:id="addToyAgeAppropriateLabel1" layoutX="383.0" layoutY="308.0" text="Puzzle" />
+                              <Label fx:id="addToyAgeAppropriateLabel11" layoutX="381.0" layoutY="56.0" text="Animal" />
+                              <Label fx:id="addToyAgeAppropriateLabel111" layoutX="634.0" layoutY="56.0" text="Figurine" />
+                              <Label fx:id="addToyAgeAppropriateLabel1111" layoutX="623.0" layoutY="309.0" text="Board Game" />
+                              <Label fx:id="addToyFigureClassificationLabel" layoutX="551.0" layoutY="122.0" text="Classification" />
+                              <TextField fx:id="addToyFigureClassificationTextField" layoutX="630.0" layoutY="118.0" text="classification" />
+                              <Label fx:id="addToyAnimalMaterialLabel" layoutX="286.0" layoutY="114.0" text="Material" />
+                              <Label fx:id="addToyAnimalSizeLabel" layoutX="290.0" layoutY="154.0" text="Size" />
+                              <Label fx:id="addToyPuzzleTypeLabel" layoutX="287.0" layoutY="375.0" text="Puzzle Type" />
+                              <Label fx:id="addToyGameMinPLyrsLabel" layoutX="558.0" layoutY="359.0" text="Minimum Players" />
+                              <Label fx:id="addToyGameMaxPLyrsLabel" layoutX="558.0" layoutY="400.0" text="Maximum Players" />
+                              <Label fx:id="addToyGameDesignersLabel" layoutX="558.0" layoutY="442.0" text="Designers" />
+                              <TextField fx:id="addToyAnimalMaterialTextBox" layoutX="359.0" layoutY="110.0" text="material" />
+                              <TextField fx:id="addToyAnimalSizeTextBox" layoutX="359.0" layoutY="150.0" text="size" />
+                              <TextField fx:id="addToyPuzzleTypeTextBox" layoutX="359.0" layoutY="371.0" text="puzzle type" />
+                              <TextField fx:id="addToyGameMinPLyrsTextField" layoutX="689.0" layoutY="355.0" prefHeight="25.0" prefWidth="72.0" text="min" />
+                              <TextField fx:id="addToyGameDesignersTextField" layoutX="614.0" layoutY="438.0" text="max" />
+                              <TextField fx:id="addToyGameMaxPLyrsTextField" layoutX="690.0" layoutY="396.0" prefHeight="25.0" prefWidth="72.0" text="designers" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="removeToyTabPane" text="Remove Toy">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="800.0">
+                           <children>
+                              <ListView layoutX="261.0" layoutY="25.0" prefHeight="451.0" prefWidth="526.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="55.0" />
+                              <Separator layoutX="34.0" layoutY="133.0" prefHeight="15.0" prefWidth="249.0" AnchorPane.bottomAnchor="445.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="565.0" AnchorPane.topAnchor="115.0" />
+                              <Separator layoutX="150.0" layoutY="31.0" maxHeight="-Infinity" prefHeight="15.0" prefWidth="800.0" AnchorPane.bottomAnchor="515.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                              <Text layoutX="300.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To The Toy Store" textAlignment="CENTER" AnchorPane.bottomAnchor="535.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="removeToySNTextField" layoutX="46.0" layoutY="216.0" />
+                              <Button fx:id="removeToyButton" layoutX="80.0" layoutY="317.0" mnemonicParsing="false" text="Remove Toy" />
+                              <Label fx:id="removeToyLabel2" layoutX="7.0" layoutY="160.0" text="Serial Number:" AnchorPane.leftAnchor="7.0" />
+                              <Label fx:id="removeToyLabel1" layoutX="14.0" layoutY="73.0" text="Enter Toy Serial Number:" AnchorPane.leftAnchor="10.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
