@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -13,8 +14,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ComboBox;
-
 
 
 public class Manager {
@@ -92,16 +91,16 @@ public class Manager {
     private Label addToyAgeAppropriateLabel;
 
     @FXML
-    private Label addToyAgeAppropriateLabel1;
+    private Label addToyPuzzleLabel;
 
     @FXML
-    private Label addToyAgeAppropriateLabel11;
+    private Label addToyAnimalLabel;
 
     @FXML
-    private Label addToyAgeAppropriateLabel111;
+    private Label addToyFigureLabel;
 
     @FXML
-    private Label addToyAgeAppropriateLabel1111;
+    private Label addToyBoardGameLabel;
 
     @FXML
     private Label addToyFigureClassificationLabel;
@@ -112,8 +111,6 @@ public class Manager {
     @FXML
     private Label addToyAnimalMaterialLabel;
 
-
-
     @FXML
     private Label addToyAnimalSizeLabel;
 
@@ -121,10 +118,10 @@ public class Manager {
     private Label addToyPuzzleTypeLabel;
 
     @FXML
-    private Label addToyGameMinPLyrsLabel;
+    private Label addToyGameMinPlayersLabel;
 
     @FXML
-    private Label addToyGameMaxPLyrsLabel;
+    private Label addToyGameMaxPlayersLabel;
 
     @FXML
     private Label addToyGameDesignersLabel;
@@ -165,6 +162,7 @@ public class Manager {
     @FXML
     public void initialize() {
         setupRadioButtonListeners();
+        setupComboBoxListeners();
         setupComboBoxOptions();
     }
     
@@ -173,8 +171,7 @@ public class Manager {
      * This method is to ensure the correct label is highlighted in red 
      * when the corresponding radio button is selected. 
      * 
-     * This code was not auto generated, but instead written 
-     * by @Sarah_Fitzgerald do not delete when pasting new 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
      * JavaFX auto generated code in.
      */  
     private void setupRadioButtonListeners() {
@@ -211,17 +208,15 @@ public class Manager {
     }
     
     
-    
 
 
 
     /**
      * This method sets up the Combo Box to allow selection of toy types.
      * 
-     * This code was not auto generated, but instead written 
-     * by @Sarah_Fitzgerald do not delete when pasting new 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
      * JavaFX auto generated code in.
-     */
+     */  
     private void setupComboBoxOptions() {
         ObservableList<String> options = FXCollections.observableArrayList(
             "Animals", "Figures", "Puzzles", "Board Games"
@@ -229,4 +224,40 @@ public class Manager {
         addToyCategoryComboBox.setItems(options);
     }
 
+    
+    /**
+     * This method is to ensure the correct label is highlighted in red 
+     * when the corresponding option in the addToy Combo Box is selected. 
+     * 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
+     * JavaFX auto generated code in.
+     */  
+    private void setupComboBoxListeners() {
+        // Ensure your ComboBox is of type String
+        addToyCategoryComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            // Reset all labels to black (or default color)
+            addToyPuzzleLabel.setTextFill(Color.BLACK);
+            addToyAnimalLabel.setTextFill(Color.BLACK);
+            addToyFigureLabel.setTextFill(Color.BLACK);
+            addToyBoardGameLabel.setTextFill(Color.BLACK);
+
+            // Check if newValue is not null and is a String
+            if (newValue != null && newValue instanceof String) {
+                switch ((String) newValue) { // Cast newValue to String
+                    case "Puzzles":
+                        addToyPuzzleLabel.setTextFill(Color.RED);
+                        break;
+                    case "Animals":
+                        addToyAnimalLabel.setTextFill(Color.RED);
+                        break;
+                    case "Figures":
+                        addToyFigureLabel.setTextFill(Color.RED);
+                        break;
+                    case "Board Games":
+                        addToyBoardGameLabel.setTextFill(Color.RED);
+                        break;
+                }
+            }
+        });
+    }
 }

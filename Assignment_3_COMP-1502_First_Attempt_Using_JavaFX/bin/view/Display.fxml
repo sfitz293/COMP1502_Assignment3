@@ -57,11 +57,11 @@
                               </RadioButton>
                               <Separator layoutX="5.0" layoutY="113.0" maxWidth="-Infinity" prefHeight="15.0" prefWidth="204.0" AnchorPane.bottomAnchor="445.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="565.0" AnchorPane.topAnchor="115.0" />
                               <Label fx:id="searchSNLabel" layoutX="8.0" layoutY="146.0" text="Serial Number(SN)" AnchorPane.leftAnchor="10.0" />
-                              <TextField fx:id="searchSNTextField" layoutX="115.0" layoutY="142.0" prefHeight="25.0" prefWidth="110.0" text="serial number" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" AnchorPane.topAnchor="142.0" />
+                              <TextField fx:id="searchSNTextField" layoutX="115.0" layoutY="142.0" prefHeight="25.0" prefWidth="110.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" AnchorPane.topAnchor="142.0" />
                               <Label fx:id="searchNameLabel" layoutX="31.0" layoutY="204.0" text="Toy Name" AnchorPane.leftAnchor="10.0" />
-                              <TextField fx:id="searchNameTextField" layoutX="115.0" layoutY="200.0" prefHeight="25.0" prefWidth="110.0" text="name" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" />
+                              <TextField fx:id="searchNameTextField" layoutX="115.0" layoutY="200.0" prefHeight="25.0" prefWidth="110.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" />
                               <Label fx:id="searchTypeLabel" layoutX="33.0" layoutY="265.0" text="Toy Type" AnchorPane.leftAnchor="10.0" />
-                              <TextField fx:id="searchTypeTextField" layoutX="115.0" layoutY="261.0" prefHeight="25.0" prefWidth="110.0" text="type" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" />
+                              <TextField fx:id="searchTypeTextField" layoutX="115.0" layoutY="261.0" prefHeight="25.0" prefWidth="110.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" />
                               <Separator layoutX="5.0" layoutY="294.0" maxWidth="-Infinity" prefHeight="15.0" prefWidth="227.0" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="565.0" AnchorPane.topAnchor="300.0" />
                               <Button fx:id="searchSearchButton" layoutX="31.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Search" />
                               <Button fx:id="searchClearButton" layoutX="133.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Clear" />
@@ -104,35 +104,35 @@
                               <Label fx:id="addToyCategoryLabel" layoutX="49.0" layoutY="122.0" text="Category" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="150.0" />
                               <ComboBox fx:id="addToyCategoryComboBox" layoutX="99.0" layoutY="136.0" prefWidth="150.0" promptText="Toy Type" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="150.0" />
                               <Label fx:id="addToySNLabel" layoutX="18.0" layoutY="175.0" text="Serial Number" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="200.0" />
-                              <TextField fx:id="addToySNTextField" layoutX="116.0" layoutY="182.0" text="serial number" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="200.0" />
+                              <TextField fx:id="addToySNTextField" layoutX="116.0" layoutY="182.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="200.0" />
                               <Label fx:id="addToyNameLabel" layoutX="14.0" layoutY="254.0" text="Name" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="250.0" />
-                              <TextField layoutX="116.0" layoutY="246.0" text="name" AnchorPane.topAnchor="250.0" />
+                              <TextField layoutX="116.0" layoutY="246.0" AnchorPane.topAnchor="250.0" />
                               <Label fx:id="addToyBrandLabel" layoutX="32.0" layoutY="277.0" text="Brand" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="300.0" />
-                              <TextField layoutX="116.0" layoutY="288.0" text="brand" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="300.0" />
+                              <TextField layoutX="116.0" layoutY="288.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="300.0" />
                               <Label fx:id="addToyPriceLabel" layoutX="20.0" layoutY="342.0" text="Price" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="350.0" />
-                              <TextField layoutX="116.0" layoutY="353.0" text="price" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="350.0" />
+                              <TextField layoutX="116.0" layoutY="353.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="350.0" />
                               <Label fx:id="addToyAvailableCountLabel" layoutX="12.0" layoutY="383.0" text="Available-Count" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="400.0" />
-                              <TextField layoutX="116.0" layoutY="405.0" text="available-count" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="400.0" />
+                              <TextField layoutX="116.0" layoutY="405.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="400.0" />
                               <Label fx:id="addToyAgeAppropriateLabel" layoutX="39.0" layoutY="442.0" text="Age-Appropriate" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="450.0" />
-                              <TextField layoutX="116.0" layoutY="446.0" text="age-appropriate" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="450.0" />
+                              <TextField layoutX="116.0" layoutY="446.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="450.0" />
                               <Label fx:id="addToyPuzzleLabel" layoutX="383.0" layoutY="308.0" text="Puzzle" />
                               <Label fx:id="addToyAnimalLabel" layoutX="381.0" layoutY="56.0" text="Animal" />
                               <Label fx:id="addToyFigureLabel" layoutX="634.0" layoutY="56.0" text="Figurine" />
                               <Label fx:id="addToyBoardGameLabel" layoutX="623.0" layoutY="309.0" text="Board Game" />
                               <Label fx:id="addToyFigureClassificationLabel" layoutX="551.0" layoutY="122.0" text="Classification" />
-                              <TextField fx:id="addToyFigureClassificationTextField" layoutX="630.0" layoutY="118.0" text="classification" />
+                              <TextField fx:id="addToyFigureClassificationTextField" layoutX="630.0" layoutY="118.0" />
                               <Label fx:id="addToyAnimalMaterialLabel" layoutX="286.0" layoutY="114.0" text="Material" />
                               <Label fx:id="addToyAnimalSizeLabel" layoutX="290.0" layoutY="154.0" text="Size" />
                               <Label fx:id="addToyPuzzleTypeLabel" layoutX="287.0" layoutY="375.0" text="Puzzle Type" />
-                              <Label fx:id="addToyGameMinPLyrsLabel" layoutX="558.0" layoutY="359.0" text="Minimum Players" />
-                              <Label fx:id="addToyGameMaxPLyrsLabel" layoutX="558.0" layoutY="400.0" text="Maximum Players" />
+                              <Label fx:id="addToyGameMinPlayersLabel" layoutX="558.0" layoutY="359.0" text="Minimum Players" />
+                              <Label fx:id="addToyGameMaxPlayersLabel" layoutX="558.0" layoutY="400.0" text="Maximum Players" />
                               <Label fx:id="addToyGameDesignersLabel" layoutX="558.0" layoutY="442.0" text="Designers" />
-                              <TextField fx:id="addToyAnimalMaterialTextBox" layoutX="359.0" layoutY="110.0" text="material" />
-                              <TextField fx:id="addToyAnimalSizeTextBox" layoutX="359.0" layoutY="150.0" text="size" />
-                              <TextField fx:id="addToyPuzzleTypeTextBox" layoutX="359.0" layoutY="371.0" text="puzzle type" />
-                              <TextField fx:id="addToyGameMinPLyrsTextField" layoutX="689.0" layoutY="355.0" prefHeight="25.0" prefWidth="72.0" text="min" />
-                              <TextField fx:id="addToyGameDesignersTextField" layoutX="614.0" layoutY="438.0" text="max" />
-                              <TextField fx:id="addToyGameMaxPLyrsTextField" layoutX="690.0" layoutY="396.0" prefHeight="25.0" prefWidth="72.0" text="designers" />
+                              <TextField fx:id="addToyAnimalMaterialTextBox" layoutX="359.0" layoutY="110.0" />
+                              <TextField fx:id="addToyAnimalSizeTextBox" layoutX="359.0" layoutY="150.0" />
+                              <TextField fx:id="addToyPuzzleTypeTextBox" layoutX="359.0" layoutY="371.0" />
+                              <TextField fx:id="addToyGameMinPLyrsTextField" layoutX="689.0" layoutY="355.0" prefHeight="25.0" prefWidth="72.0" />
+                              <TextField fx:id="addToyGameDesignersTextField" layoutX="614.0" layoutY="438.0" />
+                              <TextField fx:id="addToyGameMaxPLyrsTextField" layoutX="690.0" layoutY="396.0" prefHeight="25.0" prefWidth="72.0" />
                            </children>
                         </AnchorPane>
                   </content>
