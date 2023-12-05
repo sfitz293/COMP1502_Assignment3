@@ -63,9 +63,9 @@
                               <Label fx:id="searchTypeLabel" layoutX="33.0" layoutY="265.0" text="Toy Type" AnchorPane.leftAnchor="10.0" />
                               <TextField fx:id="searchTypeTextField" layoutX="115.0" layoutY="261.0" prefHeight="25.0" prefWidth="110.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" />
                               <Separator layoutX="5.0" layoutY="294.0" maxWidth="-Infinity" prefHeight="15.0" prefWidth="227.0" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="565.0" AnchorPane.topAnchor="300.0" />
-                              <Button fx:id="searchSearchButton" layoutX="31.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Search" />
-                              <Button fx:id="searchClearButton" layoutX="133.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Clear" />
-                              <ListView layoutX="238.0" layoutY="56.0" prefHeight="395.0" prefWidth="555.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="55.0">
+                              <Button fx:id="searchSearchButton" layoutX="31.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSearchSearchButtonAction" prefHeight="25.0" prefWidth="73.0" text="Search" />
+                              <Button fx:id="searchClearButton" layoutX="133.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSearchClearButtonAction" prefHeight="25.0" prefWidth="73.0" text="Clear" />
+                              <ListView fx:id="toyFinderListView" layoutX="238.0" layoutY="56.0" prefHeight="395.0" prefWidth="555.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="55.0">
                                  <padding>
                                     <Insets right="10.0" />
                                  </padding>
@@ -106,15 +106,15 @@
                               <Label fx:id="addToySNLabel" layoutX="18.0" layoutY="175.0" text="Serial Number" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="200.0" />
                               <TextField fx:id="addToySNTextField" layoutX="116.0" layoutY="182.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="200.0" />
                               <Label fx:id="addToyNameLabel" layoutX="14.0" layoutY="254.0" text="Name" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="250.0" />
-                              <TextField layoutX="116.0" layoutY="246.0" AnchorPane.topAnchor="250.0" />
+                              <TextField fx:id="addToyNameTextField" layoutX="116.0" layoutY="246.0" AnchorPane.topAnchor="250.0" />
                               <Label fx:id="addToyBrandLabel" layoutX="32.0" layoutY="277.0" text="Brand" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="300.0" />
-                              <TextField layoutX="116.0" layoutY="288.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="300.0" />
+                              <TextField fx:id="addToyBrandTextField" layoutX="116.0" layoutY="288.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="300.0" />
                               <Label fx:id="addToyPriceLabel" layoutX="20.0" layoutY="342.0" text="Price" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="350.0" />
-                              <TextField layoutX="116.0" layoutY="353.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="350.0" />
+                              <TextField fx:id="addToyPriceTextField" layoutX="116.0" layoutY="353.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="350.0" />
                               <Label fx:id="addToyAvailableCountLabel" layoutX="12.0" layoutY="383.0" text="Available-Count" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="400.0" />
-                              <TextField layoutX="116.0" layoutY="405.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="400.0" />
+                              <TextField fx:id="addToyAvailableCountTextField" layoutX="116.0" layoutY="405.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="400.0" />
                               <Label fx:id="addToyAgeAppropriateLabel" layoutX="39.0" layoutY="442.0" text="Age-Appropriate" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="450.0" />
-                              <TextField layoutX="116.0" layoutY="446.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="450.0" />
+                              <TextField fx:id="addToyAgeAppropriateTextField" layoutX="116.0" layoutY="446.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="450.0" />
                               <Label fx:id="addToyPuzzleLabel" layoutX="383.0" layoutY="308.0" text="Puzzle" />
                               <Label fx:id="addToyAnimalLabel" layoutX="381.0" layoutY="56.0" text="Animal" />
                               <Label fx:id="addToyFigureLabel" layoutX="634.0" layoutY="56.0" text="Figurine" />
@@ -133,6 +133,7 @@
                               <TextField fx:id="addToyGameMinPLyrsTextField" layoutX="689.0" layoutY="355.0" prefHeight="25.0" prefWidth="72.0" />
                               <TextField fx:id="addToyGameDesignersTextField" layoutX="614.0" layoutY="438.0" />
                               <TextField fx:id="addToyGameMaxPLyrsTextField" layoutX="690.0" layoutY="396.0" prefHeight="25.0" prefWidth="72.0" />
+                              <Button fx:id="addToyClearButton" layoutX="98.0" layoutY="504.0" mnemonicParsing="false" onAction="#handleAddToyClearButtonAction" prefHeight="25.0" prefWidth="73.0" text="Clear" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -141,7 +142,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="800.0">
                            <children>
-                              <ListView layoutX="261.0" layoutY="25.0" prefHeight="451.0" prefWidth="526.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="55.0" />
+                              <ListView fx:id="toyRemovalListView" layoutX="261.0" layoutY="25.0" prefHeight="451.0" prefWidth="526.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="55.0" />
                               <Separator layoutX="34.0" layoutY="133.0" prefHeight="15.0" prefWidth="249.0" AnchorPane.bottomAnchor="445.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="565.0" AnchorPane.topAnchor="115.0" />
                               <Separator layoutX="150.0" layoutY="31.0" maxHeight="-Infinity" prefHeight="15.0" prefWidth="800.0" AnchorPane.bottomAnchor="515.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
                               <Text layoutX="300.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To The Toy Store" textAlignment="CENTER" AnchorPane.bottomAnchor="535.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="15.0">

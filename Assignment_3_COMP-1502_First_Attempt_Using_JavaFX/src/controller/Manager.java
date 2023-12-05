@@ -1,23 +1,32 @@
 package controller;
 
 import javafx.fxml.FXML;
-
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
+
+import java.io.FileNotFoundException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 
 
-public class Manager {
+public class Manager implements Initializable{
 
+	ApplicationManager applicationManager;
+	
     @FXML
     private Tab homeTabPane;
 
@@ -58,6 +67,9 @@ public class Manager {
     private Button searchClearButton;
 
     @FXML
+    private ListView<?> toyFinderListView;
+
+    @FXML
     private Button searchPurchaseButton;
 
     @FXML
@@ -79,16 +91,31 @@ public class Manager {
     private Label addToyNameLabel;
 
     @FXML
+    private TextField addToyNameTextField;
+
+    @FXML
     private Label addToyBrandLabel;
+
+    @FXML
+    private TextField addToyBrandTextField;
 
     @FXML
     private Label addToyPriceLabel;
 
     @FXML
+    private TextField addToyPriceTextField;
+
+    @FXML
     private Label addToyAvailableCountLabel;
 
     @FXML
+    private TextField addToyAvailableCountTextField;
+
+    @FXML
     private Label addToyAgeAppropriateLabel;
+
+    @FXML
+    private TextField addToyAgeAppropriateTextField;
 
     @FXML
     private Label addToyPuzzleLabel;
@@ -145,7 +172,13 @@ public class Manager {
     private TextField addToyGameMaxPLyrsTextField;
 
     @FXML
+    private Button addToyClearButton;
+
+    @FXML
     private Tab removeToyTabPane;
+
+    @FXML
+    private ListView<?> toyRemovalListView;
 
     @FXML
     private TextField removeToySNTextField;
@@ -159,13 +192,21 @@ public class Manager {
     @FXML
     private Label removeToyLabel1;
 
+    
     @FXML
     public void initialize() {
+
+    }
+    
+    
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
         setupRadioButtonListeners();
         setupComboBoxListeners();
         setupComboBoxOptions();
-    }
-    
+		applicationManager = new ApplicationManager();
+		
+	} 
     
     /**
      * This method is to ensure the correct label is highlighted in red 
@@ -256,8 +297,89 @@ public class Manager {
                     case "Board Games":
                         addToyBoardGameLabel.setTextFill(Color.RED);
                         break;
+                        }
                 }
-            }
-        });
+        }
+        );
     }
+
+    
+    /**
+     * This method 
+     * 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
+     * JavaFX auto generated code in.
+     * @throws FileNotFoundException 
+     */  
+    @FXML
+    void handleSearchSearchButtonAction(ActionEvent event) throws FileNotFoundException {
+    	System.out.println("Hello");
+    	if (radioButtonSearchSN.isSelected()) {
+    		System.out.println("Search by SN");
+    		applicationManager.searchSerialNumberNoLoadFile(searchSNTextField.getText());
+    	}
+    	else if (radioButtonSearchName.isSelected()) {
+    		System.out.println("Search by Name");
+    		applicationManager.searchNameNoLoadFile(searchNameTextField.getText());
+    	}
+    	else if (radioButtonSearchType.isSelected()) {
+    		System.out.println("Search by Type");
+    		applicationManager.searchTypeNoLoadFile(searchTypeTextField.getText());
+    	}
+    }
+    
+    @FXML
+    void toyFinderListView() {
+    	
+    }
+    	
+
+    /**
+     * This method Clears the fields and radioButtons in the Home tab. 
+     * 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
+     * JavaFX auto generated code in.
+     */  
+    @FXML
+    void handleSearchClearButtonAction(ActionEvent event) {
+        searchSNTextField.setText("");
+        searchNameTextField.setText("");
+        searchTypeTextField.setText("");
+        radioButtonSearchSN.setSelected(false);
+        radioButtonSearchName.setSelected(false);
+        radioButtonSearchType.setSelected(false);
+    }
+
+    /**
+     * This method Clears the fields and radioButtons in the Add Toy tab. 
+     * 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
+     * JavaFX auto generated code in.
+     */  
+    @FXML
+    void handleAddToyClearButtonAction (ActionEvent event) {
+    	// General Toy Attributes
+    	addToySNTextField.setText("");
+    	addToyNameTextField.setText("");
+    	addToyBrandTextField.setText("");
+    	addToyPriceTextField.setText("");
+    	addToyAvailableCountTextField.setText("");
+    	addToyAgeAppropriateTextField.setText("");
+    	// Animal Toy Attributes
+    	addToyAnimalMaterialTextBox.setText("");
+    	addToyAnimalSizeTextBox.setText("");
+    	// Figure Toy Attributes
+    	addToyFigureClassificationTextField.setText("");
+    	// Puzzle Toy Attributes
+    	addToyPuzzleTypeTextBox.setText("");
+    	// Board Game Toy Attributes
+    	addToyGameMinPLyrsTextField.setText("");
+    	addToyGameMaxPLyrsTextField.setText("");
+    	addToyGameDesignersTextField.setText("");
+    }
+
+
+
+    
+    
 }
