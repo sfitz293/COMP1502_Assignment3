@@ -176,52 +176,41 @@ public class Manager {
      * This code was not auto generated, but instead written 
      * by @Sarah_Fitzgerald do not delete when pasting new 
      * JavaFX auto generated code in.
-     */
+     */  
     private void setupRadioButtonListeners() {
-        // Listener for Serial Number Radio Button.
-        radioButtonSearchSN.selectedProperty().addListener(new ChangeListener<Boolean>() {
+        ChangeListener<Boolean> radioChangeListener = new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue) {
-                	// Change to red when selected.
-                    searchSNLabel.setTextFill(Color.RED); 
-                } 
-                else {
-                	// Black until selected.
-                    searchSNLabel.setTextFill(Color.BLACK);
+                if (observable == radioButtonSearchSN.selectedProperty()) {
+                    // Logic for Serial Number Radio Button
+                    if (newValue) {
+                        searchSNLabel.setTextFill(Color.RED);
+                    } else {
+                        searchSNLabel.setTextFill(Color.BLACK);
+                    }
+                } else if (observable == radioButtonSearchName.selectedProperty()) {
+                    // Logic for Name Radio Button
+                    if (newValue) {
+                        searchNameLabel.setTextFill(Color.RED);
+                    } else {
+                        searchNameLabel.setTextFill(Color.BLACK);
+                    }
+                } else if (observable == radioButtonSearchType.selectedProperty()) {
+                    // Logic for Type Radio Button
+                    if (newValue) {
+                        searchTypeLabel.setTextFill(Color.RED);
+                    } else {
+                        searchTypeLabel.setTextFill(Color.BLACK);
+                    }
                 }
             }
-        });
-     // Listener for Name Radio Button.
-        radioButtonSearchName.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            // Implementation
-        	@Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue) {
-                	// Change to red when selected.
-                	searchNameLabel.setTextFill(Color.RED); // Change to desired color
-                } 
-                else {
-                	// Black until selected.
-                	searchNameLabel.setTextFill(Color.BLACK); // Default color
-                }
-            }
-        });
-     // Listener for Type Radio Button.
-        radioButtonSearchType.selectedProperty().addListener(new ChangeListener<Boolean>() {
-        	@Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue) {
-                	// Change to red when selected.
-                	searchTypeLabel.setTextFill(Color.RED); 
-                } 
-                else {
-                	// Black until selected.
-                	searchTypeLabel.setTextFill(Color.BLACK);
-                }
-            }
-        });
+        };
+        radioButtonSearchSN.selectedProperty().addListener(radioChangeListener);
+        radioButtonSearchName.selectedProperty().addListener(radioChangeListener);
+        radioButtonSearchType.selectedProperty().addListener(radioChangeListener);
     }
+    
+    
     
 
 
