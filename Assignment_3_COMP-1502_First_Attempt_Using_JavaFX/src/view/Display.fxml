@@ -70,7 +70,7 @@
                                     <Insets right="10.0" />
                                  </padding>
                               </ListView>
-                              <Button fx:id="searchPurchaseButton" layoutX="442.0" layoutY="495.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Purchase" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0" />
+                              <Button fx:id="searchPurchaseButton" layoutX="442.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleSearchPurchaseButtonAction" prefHeight="25.0" prefWidth="73.0" text="Purchase" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -151,7 +151,7 @@
                                  </font>
                               </Text>
                               <TextField fx:id="removeToySNTextField" layoutX="46.0" layoutY="216.0" />
-                              <Button fx:id="removeToyButton" layoutX="80.0" layoutY="317.0" mnemonicParsing="false" text="Remove Toy" />
+                              <Button fx:id="removeToyButton" layoutX="80.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleRemoveToyButtonAction" text="Remove Toy" />
                               <Label fx:id="removeToyLabel2" layoutX="7.0" layoutY="160.0" text="Serial Number:" AnchorPane.leftAnchor="7.0" />
                               <Label fx:id="removeToyLabel1" layoutX="14.0" layoutY="73.0" text="Enter Toy Serial Number:" AnchorPane.leftAnchor="10.0">
                                  <font>

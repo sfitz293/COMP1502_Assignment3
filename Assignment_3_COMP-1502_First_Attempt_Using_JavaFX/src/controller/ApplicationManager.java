@@ -159,6 +159,34 @@ public class ApplicationManager {
 
     
 	/**
+	 * This method allows you to remove a toy from the list of toys based on its serial number.
+	 * It prompts the user for the serial number and removes the matching toy if found.
+	 * After removal, it saves the changes to the file.
+	 */
+	public void removeToy(String SN) {
+
+	    boolean found = false;
+	    Iterator<Toys> iterator = listOfEveryToy.iterator();
+	    while (iterator.hasNext()) {
+	        Toys toy = iterator.next();
+	        if (toy.getSerialNumber().equals(SN)) {
+	            iterator.remove();
+	            found = true;
+	            break;
+	        }
+	    }
+	    if (found) {
+	        saveToFile(); // Save changes after removal
+	        System.out.println("\nToy successfully removed from the system.");
+	    } else {
+	        System.out.println("\nToy with the given serial number not found.");
+	    }
+
+	}	
+	
+	
+	
+	/**
 	 * This method saves the current list of toys to a file.
 	 * It iterates through the list and writes each toy's data to the file.
 	 * Ensure that the `toString()` method of Toys returns the data in the correct file format.

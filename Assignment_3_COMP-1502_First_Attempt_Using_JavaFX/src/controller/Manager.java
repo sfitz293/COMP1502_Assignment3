@@ -11,9 +11,11 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
+import model.Toys;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -67,7 +69,7 @@ public class Manager implements Initializable{
     private Button searchClearButton;
 
     @FXML
-    private ListView<?> toyFinderListView;
+    private ListView<Toys> toyFinderListView;
 
     @FXML
     private Button searchPurchaseButton;
@@ -248,24 +250,6 @@ public class Manager implements Initializable{
         radioButtonSearchType.selectedProperty().addListener(radioChangeListener);
     }
     
-    
-
-
-
-    /**
-     * This method sets up the Combo Box to allow selection of toy types.
-     * 
-     * author @Sarah_Fitzgerald do not delete when pasting new 
-     * JavaFX auto generated code in.
-     */  
-    private void setupComboBoxOptions() {
-        ObservableList<String> options = FXCollections.observableArrayList(
-            "Animals", "Figures", "Puzzles", "Board Games"
-        );
-        addToyCategoryComboBox.setItems(options);
-    }
-
-    
     /**
      * This method is to ensure the correct label is highlighted in red 
      * when the corresponding option in the addToy Combo Box is selected. 
@@ -302,10 +286,23 @@ public class Manager implements Initializable{
         }
         );
     }
+    
+    /**
+     * This method sets up the Combo Box to allow selection of toy types.
+     * 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
+     * JavaFX auto generated code in.
+     */  
+    private void setupComboBoxOptions() {
+        ObservableList<String> options = FXCollections.observableArrayList(
+            "Animals", "Figures", "Puzzles", "Board Games"
+        );
+        addToyCategoryComboBox.setItems(options);
+    }
 
     
     /**
-     * This method 
+     * This method SEARCHES
      * 
      * author @Sarah_Fitzgerald do not delete when pasting new 
      * JavaFX auto generated code in.
@@ -313,27 +310,59 @@ public class Manager implements Initializable{
      */  
     @FXML
     void handleSearchSearchButtonAction(ActionEvent event) throws FileNotFoundException {
-    	System.out.println("Hello");
+
+    	ArrayList<Toys> listOfToys = null;
+    	
     	if (radioButtonSearchSN.isSelected()) {
     		System.out.println("Search by SN");
-    		applicationManager.searchSerialNumberNoLoadFile(searchSNTextField.getText());
+    		listOfToys = applicationManager.searchSerialNumberNoLoadFile(searchSNTextField.getText());
     	}
     	else if (radioButtonSearchName.isSelected()) {
     		System.out.println("Search by Name");
-    		applicationManager.searchNameNoLoadFile(searchNameTextField.getText());
+    		listOfToys = applicationManager.searchNameNoLoadFile(searchNameTextField.getText());
     	}
     	else if (radioButtonSearchType.isSelected()) {
     		System.out.println("Search by Type");
     		applicationManager.searchTypeNoLoadFile(searchTypeTextField.getText());
-    	}
+        }
+        else {
+            return; 
+        }
+        ObservableList<Toys> observableSearchResults = FXCollections.observableArrayList(listOfToys);
+        toyFinderListView.setItems(observableSearchResults);
     }
     
+    
     @FXML
-    void toyFinderListView() {
-    	
+    void handleSearchPurchaseButtonAction(ActionEvent event) {
+       	ArrayList<Toys> listOfToys = null;
+        ObservableList<Toys> observableSearchResults = FXCollections.observableArrayList(listOfToys);
+        toyFinderListView.setItems(observableSearchResults);
     }
+
     	
 
+    
+    
+    @FXML
+    void handleRemoveToyButtonAction(ActionEvent event) throws FileNotFoundException {
+    	ArrayList<Toys> listOfToys;
+    	System.out.println("DELETE by SN");
+    	listOfToys = applicationManager.searchSerialNumberNoLoadFile(searchSNTextField.getText());
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * This method Clears the fields and radioButtons in the Home tab. 
      * 
@@ -376,10 +405,8 @@ public class Manager implements Initializable{
     	addToyGameMinPLyrsTextField.setText("");
     	addToyGameMaxPLyrsTextField.setText("");
     	addToyGameDesignersTextField.setText("");
+        // Reset ComboBox
+        addToyCategoryComboBox.setValue(null);
+        addToyCategoryComboBox.setPromptText("Toy Type");
     }
-
-
-
-    
-    
 }
