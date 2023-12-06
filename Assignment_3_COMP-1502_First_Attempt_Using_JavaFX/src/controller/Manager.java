@@ -5,15 +5,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import model.Toys;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -27,7 +34,12 @@ import javafx.event.ActionEvent;
 
 public class Manager implements Initializable{
 
+    // The file path to the inventory file
+    private final String FILE_PATH = "res/toys.txt";
+    
 	ApplicationManager applicationManager;
+	private ObservableList<String> messages = FXCollections.observableArrayList();
+
 	
     @FXML
     private Tab homeTabPane;
@@ -196,14 +208,17 @@ public class Manager implements Initializable{
 
     @FXML
     private Label removeToyLabel1;
+    
+    @FXML
+    private Label searchTypeTypesLabel;
+    
+    @FXML
+    private Text toyFinderMessageText;
 
     
     @FXML
     public void initialize() {
-
-    }
-    
-    
+    }   
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
         setupRadioButtonListeners();
@@ -211,8 +226,14 @@ public class Manager implements Initializable{
         setupComboBoxOptions();
 		applicationManager = new ApplicationManager();
 		
-	} 
-    
+	    // Bind the toyFinderListView to a selection model
+	    toyFinderListView.getSelectionModel().selectedItemProperty().addListener(
+	        (observable, oldValue, newValue) -> {
+	            // Handle selection change here
+	        }
+	    );
+
+	}
     /**
      * This method is to ensure the correct label is highlighted in red 
      * when the corresponding radio button is selected. 
@@ -242,8 +263,10 @@ public class Manager implements Initializable{
                     // Logic for Type Radio Button
                     if (newValue) {
                         searchTypeLabel.setTextFill(Color.RED);
+                        searchTypeTypesLabel.setTextFill(Color.RED);
                     } else {
                         searchTypeLabel.setTextFill(Color.BLACK);
+                        searchTypeTypesLabel.setTextFill(Color.BLACK);
                     }
                 }
             }
@@ -252,7 +275,6 @@ public class Manager implements Initializable{
         radioButtonSearchName.selectedProperty().addListener(radioChangeListener);
         radioButtonSearchType.selectedProperty().addListener(radioChangeListener);
     }
-    
     /**
      * This method is to ensure the correct label is highlighted in red 
      * when the corresponding option in the addToy Combo Box is selected. 
@@ -289,7 +311,6 @@ public class Manager implements Initializable{
         }
         );
     }
-    
     /**
      * This method sets up the Combo Box to allow selection of toy types.
      * 
@@ -302,10 +323,9 @@ public class Manager implements Initializable{
         );
         addToyCategoryComboBox.setItems(options);
     }
-
-    
     /**
-     * This method SEARCHES
+     * This method handles the SEARCHE functionality based on 
+     * user selected criteria.
      * 
      * author @Sarah_Fitzgerald do not delete when pasting new 
      * JavaFX auto generated code in.
@@ -313,9 +333,7 @@ public class Manager implements Initializable{
      */  
     @FXML
     void handleSearchSearchButtonAction(ActionEvent event) throws FileNotFoundException {
-
     	ArrayList<Toys> listOfToys = null;
-    	
     	if (radioButtonSearchSN.isSelected()) {
     		System.out.println("Search by SN");
     		listOfToys = applicationManager.searchSerialNumberNoLoadFile(searchSNTextField.getText());
@@ -326,7 +344,7 @@ public class Manager implements Initializable{
     	}
     	else if (radioButtonSearchType.isSelected()) {
     		System.out.println("Search by Type");
-    		applicationManager.searchTypeNoLoadFile(searchTypeTextField.getText());
+    		listOfToys = applicationManager.searchTypeNoLoadFile(searchTypeTextField.getText());
         }
         else {
             return; 
@@ -338,11 +356,49 @@ public class Manager implements Initializable{
     
     @FXML
     void handleSearchPurchaseButtonAction(ActionEvent event) {
-       	ArrayList<Toys> listOfToys = null;
-        ObservableList<Toys> observableSearchResults = FXCollections.observableArrayList(listOfToys);
-        toyFinderListView.setItems(observableSearchResults);
+    	
+        Toys selectedToy = toyFinderListView.getSelectionModel().getSelectedItem();
+        
+        if (selectedToy != null) {
+        	
+        	if (selectedToy.getAvailableCount() > 0) {
+        		selectedToy.setAvailableCount(selectedToy.getAvailableCount() - 1);
+        		toyFinderMessageText.setText("Purchase Successful!");
+        	}
+        	else if (selectedToy.getAvailableCount() == 0) {
+        		toyFinderMessageText.setText("The selected toy is no llonger in stock.");
+        	}
+            else {
+            	toyFinderMessageText.setText("The selected toy does not exist in the system.");
+            }
+        }
     }
-
+    
+    void updateCountInFile(Toys toy) {
+       
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            
+            String line;
+            StringBuilder newContents = new StringBuilder();
+            
+            while ((line = reader.readLine()) != null) {
+                // Find the line related to the toy and update its count
+                if (line.contains(toy.getSerialNumber())) {
+                    String[] parts = line.split(";");
+                    int newCount = toy.getAvailableCount();
+                    parts[1] = String.valueOf(newCount);
+                    line = String.join(";", parts);
+                }
+                newContents.append(line).append("\n");
+            }
+            
+            // Write the updated contents back to the file
+            writer.write(newContents.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     	
 
     

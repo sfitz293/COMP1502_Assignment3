@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Manager">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Manager">
    <center>
       <AnchorPane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
@@ -62,15 +62,25 @@
                               <TextField fx:id="searchNameTextField" layoutX="115.0" layoutY="200.0" prefHeight="25.0" prefWidth="110.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" />
                               <Label fx:id="searchTypeLabel" layoutX="33.0" layoutY="265.0" text="Toy Type" AnchorPane.leftAnchor="10.0" />
                               <TextField fx:id="searchTypeTextField" layoutX="115.0" layoutY="261.0" prefHeight="25.0" prefWidth="110.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="575.0" />
-                              <Separator layoutX="5.0" layoutY="294.0" maxWidth="-Infinity" prefHeight="15.0" prefWidth="227.0" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="565.0" AnchorPane.topAnchor="300.0" />
+                              <Separator layoutX="5.0" layoutY="310.0" maxWidth="-Infinity" prefHeight="15.0" prefWidth="227.0" AnchorPane.bottomAnchor="240.39999999999998" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="564.5999999999999" AnchorPane.topAnchor="310.0" />
                               <Button fx:id="searchSearchButton" layoutX="31.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSearchSearchButtonAction" prefHeight="25.0" prefWidth="73.0" text="Search" />
                               <Button fx:id="searchClearButton" layoutX="133.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSearchClearButtonAction" prefHeight="25.0" prefWidth="73.0" text="Clear" />
-                              <ListView fx:id="toyFinderListView" layoutX="238.0" layoutY="56.0" prefHeight="395.0" prefWidth="555.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="55.0">
+                              <ListView fx:id="toyFinderListView" layoutX="238.0" layoutY="56.0" prefHeight="322.0" prefWidth="555.0" AnchorPane.bottomAnchor="194.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="55.0">
                                  <padding>
                                     <Insets right="10.0" />
                                  </padding>
                               </ListView>
                               <Button fx:id="searchPurchaseButton" layoutX="442.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleSearchPurchaseButtonAction" prefHeight="25.0" prefWidth="73.0" text="Purchase" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0" />
+                              <Label fx:id="searchTypeTypesLabel" layoutX="5.0" layoutY="287.0" prefHeight="18.0" prefWidth="219.0" text="(&quot;animals&quot;, &quot;puzzles&quot;, &quot;board games&quot;, &quot;figures&quot;)">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Text fx:id="toyFinderMessageText" layoutX="327.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="346.13671875">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                   </content>

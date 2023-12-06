@@ -1,17 +1,12 @@
 package controller;
 
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
-
-import exceptions.NegativePriceException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 
 import java.util.Iterator;
 import java.util.Scanner;
@@ -21,23 +16,17 @@ import model.BoardGames;
 import model.Figures;
 import model.Puzzles;
 import model.Toys;
-
-
 /**
  * This class is the behind the scenes class that runs the Toy Inventory program.
  * 
  * @author Brett Big Swan 
  * @author Sarah Fitzgerald
  */
-public class ApplicationManager {
-									
+public class ApplicationManager {						
     // Initializing the ArrayList of Toys
     private ArrayList<Toys> listOfEveryToy;		
     // The file path to the inventory file
-    private final String FILE_PATH = "res/toys.txt"; 	
-
-
-
+    private final String FILE_PATH = "res/toys.txt";
     /**
      * This Constructor constructs an ApplicationManager object.
      * It initializes the scanner, ArrayList, and loads data from 
@@ -51,7 +40,6 @@ public class ApplicationManager {
 			e.printStackTrace();
 		}
     }
-
     /**
      * This is the method used to load toy data from a file called "Toys.txt' 
      * and populate the ArrayList.
@@ -102,15 +90,12 @@ public class ApplicationManager {
     		}
     	}
     	scanner.close();	// Close the File Reader Scanner
-    }
-    
-
-    /**
-     * This is the method to allow a user to search for toys by their
-     * serial number and then returns the results.
+    }  
+	/**
+     * This method allows users to search by SERIAL NUMBER
+     * and return the results.
      * 
-     * @return A list of toys found.
-     * @throws FileNotFoundException If the file is not found.
+     * @return A list of toys found by SERIAL NUMBER.
      */
 	public ArrayList<Toys> searchSerialNumberNoLoadFile(String SN) throws FileNotFoundException {
 		ArrayList <Toys> listOfToys = new ArrayList<>();
@@ -122,12 +107,11 @@ public class ApplicationManager {
 		System.out.println(listOfToys);
 		return listOfToys;
 	}
-	
-    /**
-     * This is the method to allow a user to search for toys by their
-     * name and return the results.
+	/**
+     * This method allows users to search by NAME
+     * and return the results.
      * 
-     * @return A list of toys found.
+     * @return A list of toys found by NAME.
      */
 	public ArrayList<Toys> searchNameNoLoadFile(String Name){	
 		ArrayList<Toys> listOfToys = new ArrayList<>();
@@ -138,13 +122,12 @@ public class ApplicationManager {
 		}
 		System.out.println(listOfToys);
 		return listOfToys;
-	}
-	
-    /**
-     * This is the method to allow a user to search for toys by their
-     * type and return the results.
+	}	
+	/**
+     * This method allows users to search by TYPE
+     * and return the results.
      * 
-     * @return A list of toys found.
+     * @return A list of toys found by TYPE.
      */
 	public ArrayList<Toys> searchTypeNoLoadFile(String Type){	
 		ArrayList<Toys> listOfToys = new ArrayList<>();
@@ -156,8 +139,10 @@ public class ApplicationManager {
 		System.out.println(listOfToys);
 	    return listOfToys;
 	}
-
-    
+	
+	
+	
+	
 	/**
 	 * This method allows you to remove a toy from the list of toys based on its serial number.
 	 * It prompts the user for the serial number and removes the matching toy if found.
@@ -200,9 +185,7 @@ public class ApplicationManager {
         } catch (IOException e) {
             System.err.println("\nAn error occurred while updating the file: " + e.getMessage());
         }
-    }
-    
-	
+    }	
     /**
      * This method is used to close the application.
      * It saves the current list of toys to a file using the `saveToFile()` method
