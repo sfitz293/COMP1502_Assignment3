@@ -175,12 +175,15 @@ public class Manager implements Initializable{
 
     @FXML
     private Button addToyClearButton;
+    
+    @FXML
+    private Button addToyAddButton;
 
     @FXML
     private Tab removeToyTabPane;
 
     @FXML
-    private ListView<?> toyRemovalListView;
+    private ListView<Toys> toyRemovalListView;
 
     @FXML
     private TextField removeToySNTextField;
@@ -356,7 +359,10 @@ public class Manager implements Initializable{
     
     
     
-    
+    @FXML
+    void handleAddToyAddButtonAction(ActionEvent event) {
+
+    }
     
     
     
