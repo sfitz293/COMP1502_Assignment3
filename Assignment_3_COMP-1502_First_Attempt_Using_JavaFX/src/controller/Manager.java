@@ -214,6 +214,9 @@ public class Manager implements Initializable{
     
     @FXML
     private Text toyFinderMessageText;
+    
+    @FXML
+    private Text toyRemovalMessageText;
 
     
     @FXML
@@ -352,38 +355,46 @@ public class Manager implements Initializable{
         ObservableList<Toys> observableSearchResults = FXCollections.observableArrayList(listOfToys);
         toyFinderListView.setItems(observableSearchResults);
     }
-    
-    
+    /**
+     * This method allows user to purchase their selected toy.
+     * 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
+     * JavaFX auto generated code in.
+     * @throws FileNotFoundException 
+     */  
     @FXML
     void handleSearchPurchaseButtonAction(ActionEvent event) {
-    	
         Toys selectedToy = toyFinderListView.getSelectionModel().getSelectedItem();
-        
         if (selectedToy != null) {
-        	
         	if (selectedToy.getAvailableCount() > 0) {
         		selectedToy.setAvailableCount(selectedToy.getAvailableCount() - 1);
         		toyFinderMessageText.setText("Purchase Successful!");
+        		toyFinderMessageText.setFill(Color.GREEN);
         	}
         	else if (selectedToy.getAvailableCount() == 0) {
-        		toyFinderMessageText.setText("The selected toy is no llonger in stock.");
+        		toyFinderMessageText.setText("The selected toy is no longer in stock.");
+        		toyFinderMessageText.setFill(Color.RED);
         	}
             else {
             	toyFinderMessageText.setText("The selected toy does not exist in the system.");
+            	toyFinderMessageText.setFill(Color.RED);
             }
         }
     }
-    
+    /**
+     * This method decrements count accordingly.
+     * 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
+     * JavaFX auto generated code in.
+     * @throws FileNotFoundException 
+     */  
     void updateCountInFile(Toys toy) {
-       
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
              BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
-            
             String line;
-            StringBuilder newContents = new StringBuilder();
-            
+            StringBuilder newContents = new StringBuilder();   
             while ((line = reader.readLine()) != null) {
-                // Find the line related to the toy and update its count
+                // Find the line related to toy, update the count.
                 if (line.contains(toy.getSerialNumber())) {
                     String[] parts = line.split(";");
                     int newCount = toy.getAvailableCount();
@@ -392,27 +403,66 @@ public class Manager implements Initializable{
                 }
                 newContents.append(line).append("\n");
             }
-            
-            // Write the updated contents back to the file
+            // Write the updated contents back text file.
             writer.write(newContents.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     	
-
-    
-    
+    /**
+     * This method allows user to remove the selected toy.
+     * 
+     * author @Sarah_Fitzgerald do not delete when pasting new 
+     * JavaFX auto generated code in.
+     * @throws FileNotFoundException 
+     */  
     @FXML
     void handleRemoveToyButtonAction(ActionEvent event) throws FileNotFoundException {
-    	ArrayList<Toys> listOfToys;
-    	System.out.println("DELETE by SN");
-    	listOfToys = applicationManager.searchSerialNumberNoLoadFile(searchSNTextField.getText());
+    	ArrayList<Toys> listOfToys = null;
+        String serialNumberToRemove = removeToySNTextField.getText();
+        
+        // Callin removeToy method from  applicationManager calss.
+        applicationManager.removeToy(serialNumberToRemove);
+        // Populate toyRemovalListView with the updated list of toys
+        ObservableList<Toys> observableListOfToys = FXCollections.observableArrayList(listOfToys);
+        toyRemovalListView.setItems(observableListOfToys);
+        
+        // Display a message indicating successful removal in gree
+        toyRemovalMessageText.setText("Toy with Serial Number " + serialNumberToRemove + " has been removed.");
+        toyRemovalMessageText.setFill(Color.GREEN);
     }
+
+
+
+
+    /**
+     * This method removes all information about the selected toy from the data source.
+     * 
+     * @param toy The toy to be removed from the data source.
+     * @throws FileNotFoundException If the data source file is not found.
+     */
+    void removeToyFromDataSource(Toys toy) throws FileNotFoundException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            String line;
+            StringBuilder newContents = new StringBuilder();   
+            while ((line = reader.readLine()) != null) {
+                // Find the line related to toy and skip it (effectively removing it)
+                if (!line.contains(toy.getSerialNumber())) {
+                    newContents.append(line).append("\n");
+                }
+            }
+            // Write the updated contents back to the text file.
+            writer.write(newContents.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     
-    
-    
-    
+
+
     
     
     @FXML

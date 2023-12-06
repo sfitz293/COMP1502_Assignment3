@@ -234,3 +234,4 @@
 7894561230;cluedo;hasbro;15.99;3;4;2-6;me
 0000011112;veloicraptor blue;mattel;8.99;4;5;a
 9876543339;zombie kill;mattel;24.99;11;14;3-6;nicola
+1111119999;zombie kill action figure;mattel;34.99;9;14;3-6;sarah
