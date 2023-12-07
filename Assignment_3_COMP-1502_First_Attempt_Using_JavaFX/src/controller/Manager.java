@@ -2,10 +2,11 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
@@ -13,17 +14,24 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import model.Animals;
+import model.BoardGames;
+import model.Figures;
+import model.Puzzles;
 import model.Toys;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -33,11 +41,16 @@ import javafx.event.ActionEvent;
 
 
 public class Manager implements Initializable{
+	
+	
+
 
     // The file path to the inventory file
     private final String FILE_PATH = "res/toys.txt";
     
 	ApplicationManager applicationManager;
+	ArrayList<Toys> listOfToys = null;
+	private ArrayList<Toys> listOfEveryToy = new ArrayList<>();
 	private ObservableList<String> messages = FXCollections.observableArrayList();
 
 	
@@ -187,9 +200,21 @@ public class Manager implements Initializable{
 
     @FXML
     private Button addToyClearButton;
+    // Note revisit
+    @FXML
+    private Button addToyButton;
     
     @FXML
-    private Button addToyAddButton;
+    private Label toyAnimalInfoLabel;
+
+    @FXML
+    private Label toyFigureInfoLabel;
+
+    @FXML
+    private Label toyPuzzleInfoLabel;
+
+    @FXML
+    private Label toyBoardGameInfoLabel;
 
     @FXML
     private Tab removeToyTabPane;
@@ -214,9 +239,15 @@ public class Manager implements Initializable{
     
     @FXML
     private Text toyFinderMessageText;
-    
+   
     @FXML
-    private Text toyRemovalMessageText;
+    private Label addToyMaterialLabel;
+
+    @FXML
+    private Label addToySizeLabel;
+
+    @FXML
+    private Label addToyClassificationLabel;
 
     
     @FXML
@@ -235,6 +266,7 @@ public class Manager implements Initializable{
 	            // Handle selection change here
 	        }
 	    );
+		loadFromFile(FILE_PATH);
 
 	}
     /**
@@ -355,46 +387,43 @@ public class Manager implements Initializable{
         ObservableList<Toys> observableSearchResults = FXCollections.observableArrayList(listOfToys);
         toyFinderListView.setItems(observableSearchResults);
     }
-    /**
-     * This method allows user to purchase their selected toy.
-     * 
-     * author @Sarah_Fitzgerald do not delete when pasting new 
-     * JavaFX auto generated code in.
-     * @throws FileNotFoundException 
-     */  
+    
+    
     @FXML
     void handleSearchPurchaseButtonAction(ActionEvent event) {
+    	
         Toys selectedToy = toyFinderListView.getSelectionModel().getSelectedItem();
+        
         if (selectedToy != null) {
+        	
+        	
+        	/**
+        	 * 
+        	 * SARAH MAKE NOTE OF BRETTS ALERTS!
+        	 */
         	if (selectedToy.getAvailableCount() > 0) {
         		selectedToy.setAvailableCount(selectedToy.getAvailableCount() - 1);
         		toyFinderMessageText.setText("Purchase Successful!");
-        		toyFinderMessageText.setFill(Color.GREEN);
         	}
         	else if (selectedToy.getAvailableCount() == 0) {
-        		toyFinderMessageText.setText("The selected toy is no longer in stock.");
-        		toyFinderMessageText.setFill(Color.RED);
+        		toyFinderMessageText.setText("The selected toy is no llonger in stock.");
         	}
             else {
             	toyFinderMessageText.setText("The selected toy does not exist in the system.");
-            	toyFinderMessageText.setFill(Color.RED);
             }
         }
     }
-    /**
-     * This method decrements count accordingly.
-     * 
-     * author @Sarah_Fitzgerald do not delete when pasting new 
-     * JavaFX auto generated code in.
-     * @throws FileNotFoundException 
-     */  
+    
     void updateCountInFile(Toys toy) {
+       
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
              BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            
             String line;
-            StringBuilder newContents = new StringBuilder();   
+            StringBuilder newContents = new StringBuilder();
+            
             while ((line = reader.readLine()) != null) {
-                // Find the line related to toy, update the count.
+                // Find the line related to the toy and update its count
                 if (line.contains(toy.getSerialNumber())) {
                     String[] parts = line.split(";");
                     int newCount = toy.getAvailableCount();
@@ -403,73 +432,265 @@ public class Manager implements Initializable{
                 }
                 newContents.append(line).append("\n");
             }
-            // Write the updated contents back text file.
+            
+            // Write the updated contents back to the file
             writer.write(newContents.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    	
-    /**
-     * This method allows user to remove the selected toy.
-     * 
-     * author @Sarah_Fitzgerald do not delete when pasting new 
-     * JavaFX auto generated code in.
-     * @throws FileNotFoundException 
-     */  
+
     @FXML
-    void handleRemoveToyButtonAction(ActionEvent event) throws FileNotFoundException {
-    	ArrayList<Toys> listOfToys = null;
-        String serialNumberToRemove = removeToySNTextField.getText();
+    void handleAddToyButtonAction(ActionEvent event) {
+    	
+        String serialNumber = addToySNTextField.getText();
+        String name = addToyNameTextField.getText();
+        String brand = addToyBrandTextField.getText();
+        double price = Double.parseDouble(addToyPriceTextField.getText());
+        int availableCount = Integer.parseInt(addToyAvailableCountTextField.getText());
+        int ageAppropriate = Integer.parseInt(addToyAgeAppropriateTextField.getText());
+        String toyType = addToyCategoryComboBox.getValue(); // Type from ComboBox
+        String additionalInfo1 = ""; // Additional info based on toy type
+        String additionalInfo2 = ""; // Additional info for certain toy types
+
+        // Determine additionalInfo based on toyType
+        if (toyType.equalsIgnoreCase("figures")) {
+        	
+            additionalInfo1 = addToyFigureClassificationTextField.getText();
+            
+        } else if (toyType.equalsIgnoreCase("animals")) {
+        	
+            additionalInfo1 = addToyAnimalMaterialTextBox.getText();
+            additionalInfo2 = addToyAnimalSizeTextBox.getText();
+            
+        } else if (toyType.equalsIgnoreCase("puzzles")) {
+        	
+            additionalInfo1 = addToyPuzzleTypeTextBox.getText();
+            
+        } else if (toyType.equalsIgnoreCase("board games")) {
+        	
+            additionalInfo1 = addToyGameMinPLyrsTextField.getText() + "-" + addToyGameMaxPLyrsTextField.getText();
+            additionalInfo2 = addToyGameDesignersTextField.getText();
+        }
+
+//        addToy(serialNumber, name, brand, price, availableCount, ageAppropriate, toyType, additionalInfo1, additionalInfo2);
+
+        boolean isAdded = addToy(serialNumber, name, brand, price, availableCount, ageAppropriate, toyType, additionalInfo1, additionalInfo2);
+
+        if (isAdded) {
+        	
+            // Show success alert
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("The toy has been successfully added!");
+            alert.showAndWait();
+            
+        } else {
+        	
+            // Show error alert
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("There was an error adding the toy.");
+            alert.showAndWait();
+        }
         
-        // Callin removeToy method from  applicationManager calss.
-        applicationManager.removeToy(serialNumberToRemove);
-        // Populate toyRemovalListView with the updated list of toys
-        ObservableList<Toys> observableListOfToys = FXCollections.observableArrayList(listOfToys);
-        toyRemovalListView.setItems(observableListOfToys);
+    }
+    
+    public boolean addToy(String serialNumber, String name, String brand, double price, int availableCount, int ageAppropriate, String type, String additionalInfo1, String additionalInfo2) {
+        Toys newToy = null;
+
+        switch (type.toLowerCase()) {
         
-        // Display a message indicating successful removal in gree
-        toyRemovalMessageText.setText("Toy with Serial Number " + serialNumberToRemove + " has been removed.");
-        toyRemovalMessageText.setFill(Color.GREEN);
+            case "figures":
+                // For Figures, additionalInfo1 is classification
+                newToy = new Figures(serialNumber, name, brand, price, availableCount, ageAppropriate, additionalInfo1);
+                break;
+                
+            case "animals":
+                // For Animals, additionalInfo1 is material, additionalInfo2 is size
+                newToy = new Animals(serialNumber, name, brand, price, availableCount, ageAppropriate, additionalInfo1, additionalInfo2);
+                break;
+                
+            case "puzzles":
+                // For Puzzles, additionalInfo1 is puzzleType
+                newToy = new Puzzles(serialNumber, name, brand, price, availableCount, ageAppropriate, additionalInfo1);
+                break;
+                
+            case "board games":
+                // For BoardGames, additionalInfo1 contains min-max players range, additionalInfo2 is designers
+                String[] playerRange = additionalInfo1.split("-");
+                int minPlayers = Integer.parseInt(playerRange[0]);
+                int maxPlayers = Integer.parseInt(playerRange[1]);
+                newToy = new BoardGames(serialNumber, name, brand, price, availableCount, ageAppropriate, minPlayers, maxPlayers, additionalInfo2);
+                break;
+                
+            default:
+                // If toy type is unknown, return false immediately
+                return false;
+        }
+
+        if (newToy != null) {
+        	
+            listOfEveryToy.add(newToy);
+            // save the updated list to a file
+            saveToFile(FILE_PATH);
+            return true;
+        }
+		return false;
+		}
+
+    
+
+    public void saveToFile(String FILE_PATH) {
+    	
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_PATH))) {
+        	
+            for (Toys toy : listOfEveryToy) {
+            	
+                writer.println(toy.toString()); // Assuming your toy's toString method returns a line in the format needed for the file
+            }
+        } catch (IOException e) {
+        	
+            System.err.println("An error occurred while writing to the file: " + e.getMessage());
+        }
     }
 
 
-
-
-    /**
-     * This method removes all information about the selected toy from the data source.
-     * 
-     * @param toy The toy to be removed from the data source.
-     * @throws FileNotFoundException If the data source file is not found.
-     */
-    void removeToyFromDataSource(Toys toy) throws FileNotFoundException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
-            String line;
-            StringBuilder newContents = new StringBuilder();   
-            while ((line = reader.readLine()) != null) {
-                // Find the line related to toy and skip it (effectively removing it)
-                if (!line.contains(toy.getSerialNumber())) {
-                    newContents.append(line).append("\n");
+    public void loadFromFile(String FILE_PATH) {
+    	
+        try (Scanner scanner = new Scanner(new File(FILE_PATH))) {
+        	
+            while (scanner.hasNextLine()) {
+            	
+                String line = scanner.nextLine();
+                Toys toy = parseToy(line);
+                if (toy != null) {
+                    listOfEveryToy.add(toy);
                 }
             }
-            // Write the updated contents back to the text file.
-            writer.write(newContents.toString());
+        } catch (FileNotFoundException e) {
+        	
+            System.err.println("File not found: " + e.getMessage());
+
+        }
+    }
+    
+    private Toys parseToy(String line) {
+        String[] temp = line.split(";");
+
+        String serialNumber = temp[0];
+        char firstChar = serialNumber.charAt(0);
+
+        switch (firstChar) {
+        
+            case '0': 
+            case '1': 
+                // Parse as Figures
+                return new Figures(serialNumber, temp[1], temp[2], Double.parseDouble(temp[3]), Integer.parseInt(temp[4]), Integer.parseInt(temp[5]), temp[6]);
+           
+            case '2': 
+            case '3': 
+                // Parse as Animals
+                return new Animals(serialNumber, temp[1], temp[2], Double.parseDouble(temp[3]), Integer.parseInt(temp[4]), Integer.parseInt(temp[5]), temp[6], temp[7]);
+            
+            case '4': 
+            case '5': 
+            case '6': 
+                // Parse as Puzzles
+                return new Puzzles(serialNumber, temp[1], temp[2], Double.parseDouble(temp[3]), Integer.parseInt(temp[4]), Integer.parseInt(temp[5]), temp[6]);
+            
+            case '7': 
+            case '8': 
+            case '9': 
+                // Parse as BoardGames
+                String[] playerRange = temp[6].split("-");
+                int minPlayers = Integer.parseInt(playerRange[0]);
+                int maxPlayers = Integer.parseInt(playerRange[1]);
+                return new BoardGames(serialNumber, temp[1], temp[2], Double.parseDouble(temp[3]), Integer.parseInt(temp[4]), Integer.parseInt(temp[5]), minPlayers, maxPlayers, temp[7]);
+            
+            default:
+            	
+                throw new IllegalArgumentException("Invalid or unknown serial number: " + serialNumber);
+        }
+    }
+    
+	
+    
+    @FXML
+    void handleSearchRemoveToyButtonAction(ActionEvent event) throws FileNotFoundException {
+        String searchSerialNumber = removeToySNTextField.getText();
+        listOfToys = applicationManager.searchSerialNumberNoLoadFile(searchSerialNumber);
+        ObservableList<Toys> observableSearchResults = FXCollections.observableArrayList(listOfToys);
+        toyRemovalListView.setItems(observableSearchResults);
+    }
+
+    @FXML
+    void handleRemoveToyButtonAction(ActionEvent event) throws FileNotFoundException {
+        Toys selectedToy = toyRemovalListView.getSelectionModel().getSelectedItem();
+        
+        if (selectedToy != null && selectedToy.getAvailableCount() > 0) {
+            // Remove the selected toy from the ArrayList
+            listOfToys.remove(selectedToy);
+            
+            
+            // Immediately update the .txt file after removal from the list
+            removeToyFromFile(selectedToy);
+
+            // Update the ObservableList and ListView
+            ObservableList<Toys> observableSearchResults = FXCollections.observableArrayList(listOfToys);
+            toyRemovalListView.setItems(observableSearchResults);
+            // Update the .txt file
+            removeToyFromFile(selectedToy);
+        }
+    }
+    
+    private void removeToyFromFile(Toys toyToRemove) throws FileNotFoundException {
+        File inputFile = new File(FILE_PATH);
+        File tempFile = new File("tempfile.txt");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             PrintWriter writer = new PrintWriter(new FileWriter(tempFile))) {
+
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                String[] parts = currentLine.trim().split(";");
+                if (!parts[0].equals(toyToRemove.getSerialNumber())) { 
+                    writer.println(currentLine);
+                }
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Better error handling should be implemented
+        }
+
+        // Check if the temp file has been written correctly before deleting original file
+        if (tempFile.exists() && tempFile.length() > 0) {
+            if (inputFile.delete()) {
+                if (!tempFile.renameTo(inputFile)) {
+                    System.out.println("Could not rename temp file to original file name");
+                }
+            } else {
+                System.out.println("Could not delete original file");
+            }
+        } else {
+            System.out.println("Temp file is empty or does not exist");
         }
     }
 
-    
+
+    //		0011123456;gerry giraffe;hasbro;9.99;15;4;plush;s
+
+/**
+ * 
+ * Searach SN
+ * use ".remove" to remove the item at that index in the array
+ * to find the index of the searched SN, start at 0, have count incremement by 1
+ */
 
 
-    
-    
-    @FXML
-    void handleAddToyAddButtonAction(ActionEvent event) {
 
-    }
-    
+
     
     
     

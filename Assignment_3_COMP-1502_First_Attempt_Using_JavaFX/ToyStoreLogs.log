@@ -1,0 +1,122 @@
+Dec. 06, 2023 7:48:32 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=5239019250, Name=, Type=
+Dec. 06, 2023 7:48:40 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 5239019250;nob yoshigahara puzzle design competition;game zombie;67.2;4;3;m
+Dec. 06, 2023 7:48:43 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 5239019250;nob yoshigahara puzzle design competition;game zombie;67.2;3;3;m
+Dec. 06, 2023 7:48:48 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 7:48:53 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 5239019250;nob yoshigahara puzzle design competition;game zombie;67.2;2;3;m
+Dec. 06, 2023 7:48:53 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 5239019250;nob yoshigahara puzzle design competition;game zombie;67.2;1;3;m
+Dec. 06, 2023 7:48:54 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 5239019250;nob yoshigahara puzzle design competition;game zombie;67.2;0;3;m
+Dec. 06, 2023 7:48:54 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 5239019250;nob yoshigahara puzzle design competition;game zombie;67.2;0;3;m
+Dec. 06, 2023 7:48:54 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 5239019250;nob yoshigahara puzzle design competition;game zombie;67.2;0;3;m
+Dec. 06, 2023 7:49:07 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=5239019250, Name=, Type=
+Dec. 06, 2023 7:51:02 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 7:51:03 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 7:51:04 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 7:51:51 P.M. controller.Manager handleRemoveToyButtonAction
+INFO: Toy removed: 7777888899;compgame;mrutoys;8.0;20;4;2-8;khosro
+Dec. 06, 2023 7:51:58 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=7777888899, Name=, Type=
+Dec. 06, 2023 7:56:42 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:56:55 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 4444555556;test puzzle for removal;testtoys;8.99;4;4;c
+Dec. 06, 2023 7:57:00 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 7:57:05 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:57:29 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:57:32 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 4444555556;test puzzle for removal;testtoys;8.99;4;14;c
+Dec. 06, 2023 7:57:35 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 7:57:39 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:57:41 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:57:42 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:57:45 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 4444555556;test puzzle for removal;testtoys;8.99;3;14;c
+Dec. 06, 2023 7:57:46 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 4444555556;test puzzle for removal;testtoys;8.99;2;14;c
+Dec. 06, 2023 7:57:47 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 4444555556;test puzzle for removal;testtoys;8.99;1;14;c
+Dec. 06, 2023 7:57:49 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 7:57:54 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:57:55 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:57:55 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:58:22 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:58:25 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 4444555556;test puzzle for removal;testtoys;8.99;14;4;c
+Dec. 06, 2023 7:58:28 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:58:32 P.M. controller.Manager handleSearchPurchaseButtonAction
+INFO: Purchase action performed for toy: 4444555556;test puzzle for removal;testtoys;8.99;13;4;c
+Dec. 06, 2023 7:58:34 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:58:51 P.M. controller.Manager handleRemoveToyButtonAction
+INFO: Toy removed: 4444555556;test puzzle for removal;testtoys;8.99;13;4;c
+Dec. 06, 2023 7:58:56 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:58:57 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:58:57 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:58:59 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 7:59:02 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:59:05 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:59:18 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 7:59:20 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4444555556, Name=, Type=
+Dec. 06, 2023 8:00:10 P.M. controller.Manager addToy
+INFO: New toy added: 0000111001;test doll;test toys;8.0;15;5;d
+Dec. 06, 2023 8:00:16 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 8:00:23 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=, Name=test doll, Type=
+Dec. 06, 2023 8:00:24 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=, Name=test doll, Type=
+Dec. 06, 2023 8:00:27 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=, Name=test doll, Type=
+Dec. 06, 2023 8:00:45 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=, Name=test doll, Type=
+Dec. 06, 2023 8:15:15 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4079383569, Name=, Type=
+Dec. 06, 2023 8:15:44 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=4079383569, Name=, Type=
+Dec. 06, 2023 8:17:31 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=, Name=dino, Type=
+Dec. 06, 2023 8:17:44 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 8:17:47 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=, Name=acrostic, Type=
+Dec. 06, 2023 8:19:09 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 8:19:19 P.M. controller.Manager handleSearchSearchButtonAction
+INFO: Search performed with criteria: SN=, Name=, Type=figures
+Dec. 06, 2023 8:19:23 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
+Dec. 06, 2023 8:19:23 P.M. controller.Manager handleSearchClearButtonAction
+INFO: Search fields cleared
